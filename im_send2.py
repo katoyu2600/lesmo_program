@@ -1,8 +1,8 @@
 # coding: utf-8
 #対応ハードウェア：IM920c 
 #取扱説明書：https://www.interplan.co.jp/support/solution/wireless/im920/manual/IM920_HW_manual.pdf
-#           https://www.interplan.co.jp/support/solution/wireless/im920/manual/IM920_SW_manual.pdf
-#           https://www.interplan.co.jp/support/solution/wireless/im920/manual/IM920c_HW_manual.pdf
+#            https://www.interplan.co.jp/support/solution/wireless/im920/manual/IM920_SW_manual.pdf
+#            https://www.interplan.co.jp/support/solution/wireless/im920/manual/IM920c_HW_manual.pdf
 
 #モジュールインポート
 import serial
