@@ -1,7 +1,8 @@
+#coding: utf-8
+#地磁気補正用プログラム
+
 import smbus2 as smbus
-import sys
 import time
-import math
 import numpy as np
 
 bus_number = 1
