@@ -1,3 +1,10 @@
+#coding: utf-8
+#CanSatラジコン操作用プログラム
+#操作キー説明
+# W:前進 A:左旋回 D:右旋回 S:後進 Q:左折 E:右折
+# K:モーターパワー増加 L:モーターパワー減少
+# ,:モーター左右差調節（左） .:モーター左右差調節（右）
+
 import pigpio
 import time
 import fcntl
