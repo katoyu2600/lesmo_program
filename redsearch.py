@@ -1,5 +1,9 @@
+#赤色認識プログラム
+
 import cv2
 import numpy as np
+
+#メイン処理
 def red_search(camera_count):
     for i in range(1):
         c = camera_count
