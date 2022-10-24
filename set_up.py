@@ -1,10 +1,10 @@
-import csv
+#CanSatセットアップ用プログラム
+
 from ossaudiodev import SOUND_MIXER_DIGITAL2 
 import smbus2 as smbus
 import time
 import datetime
 import sys
-import math
 import numpy as np
 import qwiic_titan_gps
 import pigpio
