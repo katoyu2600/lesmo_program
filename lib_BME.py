@@ -1,10 +1,14 @@
 #coding: utf-8
+#BME280動作確認用プログラム
+#対応ハード:AE-BME280
+#取扱説明書：https://akizukidenshi.com/download/ds/akizuki/AE-BME280_manu_v1.1.pdf
 
-import csv 
+#メイン処理
 import smbus2 as smbus
 import time
 import datetime
 
+#インスタンス設定
 bus_number  = 1
 start = time.time()
 bus = smbus.SMBus(bus_number)
@@ -18,7 +22,6 @@ t_fine = 0.0
 
 def writeReg(reg_address, data):
     bus.write_byte_data(i2c_address,reg_address,data)
-
 
 def get_calib_param():
     calib = []
@@ -59,6 +62,7 @@ def get_calib_param():
         if digH[i] & 0x8000:
             digH[i] = (-digH[i] ^ 0xFFFF) + 1 
 
+#データ読み出し
 def readData():
     data = []
     for i in range (0xF7, 0xF7+8):
@@ -76,6 +80,7 @@ def readData():
         
     return   p + "," + t +"," + h 
 
+#気圧読み出し
 def readpres() :
     data = []
     for i in range (0xF7, 0xF7+8):
@@ -85,6 +90,7 @@ def readpres() :
     #p = 1013.25
     return p
 
+#気温読み出し
 def readtemp() :
     data = []
     for i in range (0xF7, 0xF7+8):
@@ -94,6 +100,7 @@ def readtemp() :
     #t = 25
     return t
 
+#高度取得
 def altitude() :
     p0    = 1013.25
     p0fix = 1005.8
@@ -160,7 +167,6 @@ def compensate_H(adc_H):
     #print "hum : %6.2f ％" % (var_h)
     return "%.2f" % (var_h)
 
-
 def setup():
 #        open('/home/pi/row.csv', 'w')
     osrs_t = 1            #Temperature oversampling x 1
@@ -179,28 +185,30 @@ def setup():
     writeReg(0xF4,ctrl_meas_reg)
     writeReg(0xF5,config_reg)
 
-setup()
-get_calib_param()
+#メイン処理
+def main():
+    i = 0
+    
+    while i <= 1000 :
+        dt_now      =str(datetime.datetime.now())
+        tenplog     =str(readtemp())
+        preslog     =str(readpres())
+        altitudelog =str(altitude())
+        
+        print_list  =["気温",tenplog, "気圧", preslog, "高度", altitudelog]
+        
+        f = open('preset_pres.txt', 'w', encoding='UTF-8')
+        f.writelines(preslog) 
+        f.close()
+        print(print_list)
+        i = i + 1
+        time.sleep(0.1)
 
 if __name__ == '__main__':
     try:
-        i = 0
-        
-        while i <= 1000 :
-            dt_now      =str(datetime.datetime.now())
-            tenplog     =str(readtemp())
-            preslog     =str(readpres())
-            altitudelog =str(altitude())
-            
-            print_list  =["気温",tenplog, "気圧", preslog, "高度", altitudelog]
-            
-            f = open('preset_pres.txt', 'w', encoding='UTF-8')
-            f.writelines(preslog) 
-            f.close()
-            print(print_list)
-            i = i + 1
-            time.sleep(0.1)
+        setup()
+        get_calib_param()
+        main()
     
-    except :
-        f.close()
+    finally :
         pass
