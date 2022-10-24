@@ -2,7 +2,7 @@
 """
 Created on Sat Jun 19 10:54:02 2021
 
-@author: 高橋　辰輔
+@author: 高橋 辰輔
 """
 
 #from matplotlib import pyplot
