@@ -1,7 +1,13 @@
+#coding: utf-8
+#raspberrypi camera v2動作確認用プログラム
+#対応ハード：raspberrypi camera v2
+#取扱説明書：https://jp.rs-online.com/web/p/raspberry-pi-cameras/9132664
+
+#モジュールインポート
 import time
 import picamera #カメラモジュール用
-import cv2 as cv
 
+#メイン処理
 def ca_main(camera_count):
     i = camera_count
     pic_name ="redcorn"+str(i)+ ".jpg"
