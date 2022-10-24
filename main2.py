@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#試験用メインプログラム
 """
 Created on Wed May 24 01:36:00 2022
 
