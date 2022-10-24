@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#メインプログラム
 """
 Created on Wed May 24 01:36:00 2022
 
@@ -1370,8 +1371,7 @@ if __name__ == '__main__' :
     while True : 
         try:
             main()
-        
-        except:
+        finally:
             stop()
-            print("エラー")
+
 
