@@ -3,7 +3,7 @@
 """
 Created on Wed May 24 01:36:00 2022
 
-@author: 加藤　裕也
+@author: 加藤 裕也
 """
 
 #モジュールインポート
