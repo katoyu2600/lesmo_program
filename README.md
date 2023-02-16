@@ -4,6 +4,8 @@
 
 SARD 10期 CanSat LESMO搭載プログラム
 
+ローバータイプCanSat
+
 # 作成者
 
 SARD　10期　開発
