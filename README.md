@@ -54,6 +54,9 @@ ADコンバータ
 
 その他もろもろ
 
+![49CC32F6-EEA5-4975-9EEB-610F12B9AE30](https://user-images.githubusercontent.com/111445830/219353980-86019337-b981-4d72-954a-e1868b2688a2.jpg)
+
+
 # 使用方法
 
 １．ファイルをすべてダウンロードし，raspberry pi のpi配下に置く．
