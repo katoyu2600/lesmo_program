@@ -6,6 +6,7 @@ SARD 10期 CanSat LESMO搭載プログラム
 
 ローバータイプCanSat
 
+![S__27041804](https://user-images.githubusercontent.com/111445830/219353064-52dc7994-42f5-46bc-9cfc-0b46829aba06.jpg)
 
 # 作成者
 
