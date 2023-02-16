@@ -1,4 +1,4 @@
-# lesmo_program
+# lesmo_program(CanSat_program)
 
 # 概要
 
