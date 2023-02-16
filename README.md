@@ -1,6 +1,6 @@
 # lesmo_program
 
-# ＜概要＞
+# 概要
 
 SARD 10期 CanSat LESMO搭載プログラム
 
@@ -30,7 +30,7 @@ SARD　10期　開発
 
 たしかraspberrypiのバスター版
 
-# CanSat搭載物品
+# CanSat搭載機器
 
 マイコン　　　　 Raspberry pi ZERO WH
 
@@ -50,7 +50,7 @@ ADコンバータ
 
 その他もろもろ
 
-# ＜使用方法＞
+# 使用方法
 
 １．ファイルをすべてダウンロードし，raspberry pi のpi配下に置く．
 
@@ -62,7 +62,7 @@ ADコンバータ
 
 ５．競技開始
 
-# ＜ライセンス＞
+# ライセンス
 
 特にないけど
 ここに連絡してちょ
