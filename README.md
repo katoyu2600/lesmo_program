@@ -31,31 +31,39 @@ SARD　10期　開発
 
 # 動作環境
 
+使用OS
+
 たしかrasbianのバスター版
 
 ・使用pythonライブラリ
-  ＜標準ライブラリ＞
-  time
-  math
-  sys
+
+＜標準ライブラリ＞
+
+    time
+
+    math
+
+    sys
 
   ＜その他ライブラリ＞
 
-datetime
+    datetime
 
-numpy
+    numpy
 
-pigpio
+    pigpio
 
-cv2(Open CV)
+    cv2(Open CV)
 
-smbus2
+    smbus2
 
-serial(piserial)
+    serial(piserial)
 
-spidev
+    spidev
 
-picamera 　※raspberrypi OS 最新版では使用が不可能な可能性がありlibcamera,picamera2等の代替ライブラリへの乗り換えを推奨
+    picamera
+
+    ※raspberrypi OS 最新版では使用が不可能な可能性がありlibcamera,picamera2等の代替ライブラリへの乗り換えを推奨する
 
 qwiic_titan_gps
 
@@ -71,7 +79,7 @@ qwiic_titan_gps
 
 GPSモジュール　　xa1110(i2c) or AE-GYSFDMAXB (UART)
 
-　　　　　　　　　※AE-GYSFDMAXB使用の場合は通信モジュールIM920ｃ使用には新たにシリアルピンを設定する必要あり
+　　　　　　　　　※AE-GYSFDMAXB使用の場合はIM920ｃ使用には新たにシリアルピンを設定する必要あり
 
 照度センサー
 
@@ -109,5 +117,7 @@ https://twitter.com/okleabwstlea
 # 欠陥
 
 ちゃんと開いたファイルは閉じているはずなのに，OS err: too many open file err と出る．
-どこかのファイルが開きっぱなしになってるっぽいがよくわからない(;;)
+
+どこかのファイルが開きっぱなしになってるっぽいがよくわからない( ; ; )
+
 これさえ直れば．．．
