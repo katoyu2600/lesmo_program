@@ -31,11 +31,12 @@ SARD　10期　開発
 
 # 動作環境
 
-使用OS
+・使用OS
 
 たしかrasbianのバスター版
 
 ・使用pythonライブラリ
+
 
 ＜標準ライブラリ＞
 
@@ -77,7 +78,7 @@ qwiic_titan_gps
 
 9軸センサ　　　　MPU9250 (i2c)
 
-GPSモジュール　　xa1110(i2c) or AE-GYSFDMAXB (UART)
+GPSモジュール　　xa1110 (i2c) or AE-GYSFDMAXB (UART)
 
 　　　　　　　　　※AE-GYSFDMAXB使用の場合はIM920ｃ使用には新たにシリアルピンを設定する必要あり
 
