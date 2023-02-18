@@ -78,17 +78,21 @@ qwiic_titan_gps
 
 9軸センサ　　　　MPU9250 (i2c)
 
-GPSモジュール　　xa1110 (i2c) or AE-GYSFDMAXB (UART)
+GPSモジュール　　GTOPxa1110 (i2c) or AE-GYSFDMAXB (UART)
 
 　　　　　　　　　※AE-GYSFDMAXB使用の場合はIM920ｃ使用には新たにシリアルピンを設定する必要あり
 
-照度センサー
+照度センサー       GL5528
 
-ADコンバータ
+ADコンバータ     MCP3208-CI/P
 
 通信モジュール　IM920ｃ(UART)
 
 　　　　　　　　※現在入手が非常に困難なためXBee等の別通信モジュールを使用するのが丸い
+
+レギュレーター（5.0V）M78AR05-1
+
+レギュレーター（3.3V） OKI-78SR-3.3/1.5-W36-C
 
 その他もろもろ
 
