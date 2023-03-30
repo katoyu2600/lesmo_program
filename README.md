@@ -70,25 +70,25 @@ SARD　10期　開発
 
 # CanSat搭載機器
 
-マイコン　　　　 Raspberry pi ZERO WH
+マイコン :　　　　 Raspberry pi ZERO WH
 
-カメラ　　　　　 Raspberrypi camera v2
+カメラ :　　　　　 Raspberrypi camera v2
 
-気温気圧センサ　 AE-bme280 (i2c)
+気温気圧センサ :　 AE-bme280 (i2c)
 
-9軸センサ　　　　MPU9250 (i2c)
+9軸センサ :　　　　MPU9250 (i2c)
 
-GPSモジュール　　GTOPxa1110 (i2c) or AE-GYSFDMAXB (UART) ※AE-GYSFDMAXB使用の場合はIM920ｃ使用には新たにシリアルピンを設定する必要あり
+GPSモジュール :　　GTOPxa1110 (i2c) or AE-GYSFDMAXB (UART) 
 
-照度センサー  　　　　   GL5528
+照度センサ :  　　　　   GL5528
 
-ADコンバータ   　MCP3208-CI/P
+ADコンバータ :   　MCP3208-CI/P
 
-通信モジュール　IM920ｃ(UART) ※現在入手が非常に困難なためXBee等の別通信モジュールを使用するのが丸い
+通信モジュール :　IM920ｃ(UART) 
 
-レギュレーター（5.0V）　M78AR05-1
+レギュレータ（5.0V）:　M78AR05-1
 
-レギュレーター（3.3V）　 OKI-78SR-3.3/1.5-W36-C
+レギュレータ（3.3V） :　 OKI-78SR-3.3/1.5-W36-C
 
 その他必要部品あり
 
