@@ -894,8 +894,8 @@ def get_gps_goal() :
 
 #機体の方角を取得(MPU)
 def get_myangle() :
-    Px = -40 
-    Py = 250
+    Px = -50 
+    Py = 160
     #Px = 8                           #!データが真円になるように補正する必要あり
     #Py = 100
     magnetlist = Get_Magnet_status()  

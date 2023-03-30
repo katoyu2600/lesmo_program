@@ -55,14 +55,18 @@ t_fine = 0.0
 
 def writeReg(reg_address, data):
     bus.write_byte_data(i2c_address,reg_address,data)
+    bus.close() #! 03/30 追加
 
 def get_calib_param():
     calib = []
     for i in range (0x88,0x88+24):
         calib.append(bus.read_byte_data(i2c_address,i))
+        bus.close() #! 03/30 追加
     calib.append(bus.read_byte_data(i2c_address,0xA1))
+    bus.close()
     for i in range (0xE1,0xE1+7):
         calib.append(bus.read_byte_data(i2c_address,i))
+        bus.close() #! 03/30 追加
 
     digT.append((calib[1] << 8) | calib[0])
     digT.append((calib[3] << 8) | calib[2])
@@ -99,6 +103,7 @@ def read_Data():
     data = []
     for i in range (0xF7, 0xF7+8):
         data.append(bus.read_byte_data(i2c_address,i))
+        bus.close() #! 03/30 追加
     pres_raw = (data[0] << 12) | (data[1] << 4) | (data[2] >> 4)
     temp_raw = (data[3] << 12) | (data[4] << 4) | (data[5] >> 4)
     hum_raw  = (data[6] << 8)  |  data[7]
@@ -116,6 +121,7 @@ def read_pres() :
     data = []
     for i in range (0xF7, 0xF7+8):
         data.append(bus.read_byte_data(i2c_address,i))
+        bus.close() #! 03/30 追加
     pres_raw = (data[0] << 12) | (data[1] << 4) | (data[2] >> 4)
     p = compensate_P(pres_raw)
     #p = 1013.25
@@ -125,6 +131,7 @@ def read_temp() :
     data = []
     for i in range (0xF7, 0xF7+8):
         data.append(bus.read_byte_data(i2c_address,i))
+        bus.close() #! 03/30 追加
     temp_raw = (data[3] << 12) | (data[4] << 4) | (data[5] >> 4)   
     t = compensate_T(temp_raw)
     #t = 25
@@ -363,6 +370,7 @@ def Get_Accel_status():
     for i in Address_map:
         for j in i:
             n =  bus.read_byte_data(addr,j)
+            bus.close() #! 03/30 追加
             status[k] = (status[k] << 8) | n
         if status[k] & 0x8000:
             status[k] = -1 * ((status[k] ^ 0xFFFF) + 1)
@@ -383,6 +391,7 @@ def Get_Gyro_status():
     for i in Address_map:
         for j in i:
             n =  bus.read_byte_data(addr,j)
+            bus.close() #! 03/30 追加
             status[k] = (status[k] << 8) | n
         if status[k] & 0x8000:
             status[k] = -1 * ((status[k] ^ 0xFFFF) + 1)
@@ -403,6 +412,7 @@ def Get_Magnet_status():
     for i in Address_map:
         for j in i:
             n  =  bus.read_byte_data(addr,j)
+            bus.close() #! 03/30 追加
             status[k] = (int(status[k]) << 8) | n
             status[k] = int(status[k])
             #print(status[k])
@@ -414,6 +424,7 @@ def Get_Magnet_status():
     ST2 = 0x09 #ST2レジスタ、データ読み出し完了時に読み出し
     #(読み出し中はデータ破損防止のためST2が読まれるまでデータ更新が停止)
     bus.read_byte_data(addr,ST2)
+    bus.close() #! 03/30 追加
     return status
     #OVFでHOFL = 1 今後チェック機能を要実装
 
@@ -424,11 +435,13 @@ def Set_Magnet_Cofigdata():
     global pro_count
     pro_count = "SMC"
     bus.write_byte_data(0x68,0x37,0x02)
+    bus.close() #! 03/30 追加
     Address_map= [0x0A]
     config_status = [0b00010110]
     #mode1 0010 mode2 0100 14bit [4] = 0 16bit [4] = 1
     for i in Address_map:
         bus.write_byte_data(addr,i,config_status[Address_map.index(i)])
+        bus.close() #! 03/30 追加
     return 0
 
 def Set_AccelGyro_Configdata():
@@ -446,6 +459,7 @@ def Set_AccelGyro_Configdata():
         j = 0
         n = config_status[j]
         bus.write_byte_data(addr,i,n)
+        bus.close() #! 03/30 追加
         j += 1
         time.sleep(0.05)
     return 0
@@ -505,13 +519,15 @@ def s_atamawarui_hannbetuki(data):
 
 #フォトレジスタ
 spi = spidev.SpiDev()
-spi.open(0, 0) # 0：SPI0、0：CE0
-spi.max_speed_hz = 1000000 # 1MHz SPIのバージョンアップによりこの指定をしないと動かない
+
 
 def read_voltage():
+    spi.open(0, 0) # 0：SPI0、0：CE0
+    spi.max_speed_hz = 1000000 # 1MHz SPIのバージョンアップによりこの指定をしないと動かない
     dout = spi.xfer2([((0b1000+CHN)>>2)+0b100,((0b1000+CHN)&0b0011)<<6,0]) # Din(RasPi→MCP3208）を指定
     bit12 = ((dout[1]&0b1111) << 8) + dout[2] # Dout（MCP3208→RasPi）から12ビットを取り出す
     volts = round((bit12 * V_REF) / float(4095),4)  # 取得した値を電圧に変換する（12bitなので4095で割る）
+    spi.close()
     return volts # 電圧を返す
 
 def stop_spi() :

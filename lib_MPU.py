@@ -14,7 +14,7 @@ import numpy
 
 bus_number = 1
 bus = smbus.SMBus(bus_number)
-Accel_Gyro_sensor_device_addr = 0x68#0x61かもしれない
+Accel_Gyro_sensor_device_addr = 0x68 #0x61かもしれない
 #加速度センサの値を取得するためにアドレスを入手する・
 Magnet_sensor_devidce_addr = 0x0C
 #   0x00 0x02 にアクセス
@@ -33,6 +33,7 @@ def Get_Accel_status():
     for i in Address_map:
         for j in i:
             n =  bus.read_byte_data(addr,j)
+            bus.close()
             status[k] = (status[k] << 8) | n
         if status[k] & 0x8000:
             status[k] = -1 * ((status[k] ^ 0xFFFF) + 1)
@@ -53,6 +54,7 @@ def Get_Gyro_status():
     for i in Address_map:
         for j in i:
             n =  bus.read_byte_data(addr,j)
+            bus.close()
             status[k] = (status[k] << 8) | n
         if status[k] & 0x8000:
             status[k] = -1 * ((status[k] ^ 0xFFFF) + 1)
@@ -73,6 +75,7 @@ def Get_Magnet_status():
     for i in Address_map:
         for j in i:
             n  =  bus.read_byte_data(addr,j)
+            bus.close()
             status[k] = (int(status[k]) << 8) | n
             status[k] = int(status[k])
             #print(status[k])
@@ -84,6 +87,7 @@ def Get_Magnet_status():
     ST2 = 0x09 #ST2レジスタ、データ読み出し完了時に読み出し
     #(読み出し中はデータ破損防止のためST2が読まれるまでデータ更新が停止)
     bus.read_byte_data(addr,ST2)
+    bus.close()
     return status
     #OVFでHOFL = 1 今後チェック機能を要実装
 
@@ -94,11 +98,13 @@ def Set_Magnet_Cofigdata():
     global pro_count
     pro_count = "SMC"
     bus.write_byte_data(0x68,0x37,0x02)
+    bus.close()
     Address_map= [0x0A]
     config_status = [0b00010110]
     #mode1 0010 mode2 0100 14bit [4] = 0 16bit [4] = 1
     for i in Address_map:
         bus.write_byte_data(addr,i,config_status[Address_map.index(i)])
+        bus.close()
     return 0
 
 def Set_AccelGyro_Configdata():
@@ -116,6 +122,7 @@ def Set_AccelGyro_Configdata():
         j = 0
         n = config_status[j]
         bus.write_byte_data(addr,i,n)
+        bus.close()
         j += 1
         time.sleep(0.05)
     return 0

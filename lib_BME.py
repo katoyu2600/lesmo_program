@@ -22,14 +22,18 @@ t_fine = 0.0
 
 def writeReg(reg_address, data):
     bus.write_byte_data(i2c_address,reg_address,data)
+    bus.close()
 
 def get_calib_param():
     calib = []
     for i in range (0x88,0x88+24):
         calib.append(bus.read_byte_data(i2c_address,i))
+        bus.close()
     calib.append(bus.read_byte_data(i2c_address,0xA1))
+    bus.close()
     for i in range (0xE1,0xE1+7):
         calib.append(bus.read_byte_data(i2c_address,i))
+        bus.close()
 
     digT.append((calib[1] << 8) | calib[0])
     digT.append((calib[3] << 8) | calib[2])
@@ -67,6 +71,7 @@ def readData():
     data = []
     for i in range (0xF7, 0xF7+8):
         data.append(bus.read_byte_data(i2c_address,i))
+        bus.close()
     pres_raw = (data[0] << 12) | (data[1] << 4) | (data[2] >> 4)
     temp_raw = (data[3] << 12) | (data[4] << 4) | (data[5] >> 4)
     hum_raw  = (data[6] << 8)  |  data[7]
@@ -85,6 +90,7 @@ def readpres() :
     data = []
     for i in range (0xF7, 0xF7+8):
         data.append(bus.read_byte_data(i2c_address,i))
+        bus.close()
     pres_raw = (data[0] << 12) | (data[1] << 4) | (data[2] >> 4)
     p = compensate_P(pres_raw)
     #p = 1013.25
@@ -95,6 +101,7 @@ def readtemp() :
     data = []
     for i in range (0xF7, 0xF7+8):
         data.append(bus.read_byte_data(i2c_address,i))
+        bus.close()
     temp_raw = (data[3] << 12) | (data[4] << 4) | (data[5] >> 4)   
     t = compensate_T(temp_raw)
     #t = 25

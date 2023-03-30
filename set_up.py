@@ -1,6 +1,4 @@
 #CanSatセットアップ用プログラム
-
-from ossaudiodev import SOUND_MIXER_DIGITAL2 
 import smbus2 as smbus
 import time
 import datetime
