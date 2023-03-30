@@ -2,14 +2,17 @@
 
 # 概要
 
-SARD 10期 CanSat LESMO搭載プログラム
+SARD 10期 製作
 
-ローバータイプCanSat
+ローバータイプ CanSat 
+
+LESMO 搭載プログラム
+
 ![CE92EB07-D1E2-4289-B9B9-05D0CFCB7E15](https://user-images.githubusercontent.com/111445830/219361996-b047609e-4d12-4588-9974-cbdfcb6cfe80.jpg)
 
 # 作成者
 
-SARD　10期　開発
+SARD　10期　開発 project 電装班長
 
 加藤裕也
 
