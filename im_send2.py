@@ -44,9 +44,9 @@ def get_flag() :
 
 #メイン処理
 def main():
-    pi.set_mode(IM_PIN, pigpio.OUTPUT)
-    pi.write(IM_PIN, 1)
-    while True :
+    pi.set_mode(IM_PIN, pigpio.OUTPUT) #この2行はelifの中の方がいいかもしれない
+    pi.write(IM_PIN, 1)                
+    while True :                      #フラグが立てば通信開始
         flag = get_flag()
         if flag == 0 :
             print("no_signal")
